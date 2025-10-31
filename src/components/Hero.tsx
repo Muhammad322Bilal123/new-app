@@ -30,7 +30,7 @@ export default function Hero({ scrollY }: HeroProps) {
         newParticles.push({
           id: i,
           delay: Math.random() * 8,
-          duration: 6 + Math.random() * 4, // 6-10 seconds
+          duration: 12 + Math.random() * 8, // 12-20 seconds
           color: colors[Math.floor(Math.random() * colors.length)],
           top: Math.random() * 100, // Fixed top position
         });
@@ -91,7 +91,7 @@ export default function Hero({ scrollY }: HeroProps) {
       </p>
 
       {/* Call-to-action button */}
-      <button className="px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 animate-cta z-20">
+      <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 animate-cta z-30">
       Start Learning
       </button>
 
