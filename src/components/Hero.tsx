@@ -47,7 +47,7 @@ export default function Hero({ scrollY }: HeroProps) {
 
   return (
     <section
-      className="relative h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden pb-16 md:pb-0"
+      className="relative h-screen flex flex-col justify-start items-center text-center px-6 overflow-hidden pb-16 md:pb-0 pt-20"
       style={{
       opacity,
       transform: `scale(${scale}) translateY(${parallax}px)`,
@@ -79,7 +79,7 @@ export default function Hero({ scrollY }: HeroProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-[#020614]/60 to-[#000008]/70 z-10"></div>
 
       {/* Hero Title */}
-      <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 z-20">
+      <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 z-20" style={{ fontFamily: 'Orbitron, monospace' }}>
       <span className="bg-gradient-to-r from-[#c084fc] via-[#fb7185] to-[#60a5fa] bg-clip-text text-transparent text-shadow-lg">
         iBrain
       </span>
