@@ -91,8 +91,8 @@ export default function Hero({ scrollY }: HeroProps) {
       </p>
 
       {/* Call-to-action button */}
-      <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 animate-cta z-30">
-      Start Learning
+      <button className="absolute bottom-32 left-1/2 transform -translate-x-1/2 px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 animate-cta z-30">
+        Start Learning
       </button>
 
       {/* Apple-style accent line */}
