@@ -6,11 +6,39 @@ interface HeroProps {
 
 export default function Hero({ scrollY }: HeroProps) {
   const [offsetY, setOffsetY] = useState(0);
+  const [particles, setParticles] = useState<Array<{id: number, delay: number, duration: number, color: string, top: number}>>([]);
 
   useEffect(() => {
     const handleScroll = () => setOffsetY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    // Generate particles
+    const generateParticles = () => {
+      const newParticles = [];
+      const colors = [
+        'rgba(59, 130, 246, 1)', // electric blue
+        'rgba(147, 51, 234, 1)', // violet
+        'rgba(6, 182, 212, 1)',  // neon cyan
+        'rgba(236, 72, 153, 0.8)', // pink highlight
+        'rgba(99, 102, 241, 1)', // indigo
+      ];
+
+      for (let i = 0; i < 50; i++) {
+        newParticles.push({
+          id: i,
+          delay: Math.random() * 8,
+          duration: 6 + Math.random() * 4, // 6-10 seconds
+          color: colors[Math.floor(Math.random() * colors.length)],
+          top: Math.random() * 100, // Fixed top position
+        });
+      }
+      setParticles(newParticles);
+    };
+
+    generateParticles();
   }, []);
 
   const opacity = Math.max(0, 1 - scrollY / 500);
@@ -26,21 +54,29 @@ export default function Hero({ scrollY }: HeroProps) {
       transition: 'opacity 0.2s, transform 0.2s',
       }}
     >
-      {/* Background video */}
-      <video
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="absolute inset-0 w-full h-full object-cover z-0"
-      style={{ filter: 'blur(3px) brightness(0.4)', transform: 'scale(1.03)', opacity: 0.5 }}
-      >
-      <source src="/public/xyz.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-      </video>
+      {/* Particle Animation Background */}
+      <div className="absolute inset-0 overflow-hidden z-0">
+        {particles.length > 0 && particles.map((particle) => (
+          <div
+            key={particle.id}
+            className="absolute particle"
+            style={{
+              left: '-10px',
+              top: `${particle.top}%`,
+              animationDelay: `${particle.delay}s`,
+              animationDuration: `${particle.duration}s`,
+              backgroundColor: particle.color,
+              boxShadow: `0 0 20px ${particle.color}, 0 0 40px ${particle.color}40`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Ambient gradient lighting */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent animate-pulse z-5"></div>
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#020614]/70 to-[#000008]/80 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#020614]/60 to-[#000008]/70 z-10"></div>
 
       {/* Hero Title */}
       <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 z-20">
@@ -56,13 +92,42 @@ export default function Hero({ scrollY }: HeroProps) {
 
       {/* Call-to-action button */}
       <button className="px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 animate-cta z-20">
-      Experience Learning Reinvented
+      Start Learning
       </button>
 
       {/* Apple-style accent line */}
       <div className="absolute bottom-12 w-40 h-1 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 opacity-30 animate-pulse z-20" />
 
       <style>{`
+      /* Particle animation */
+      .particle {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        filter: blur(0.8px);
+        animation: particleFlow linear infinite;
+        opacity: 0;
+      }
+
+      @keyframes particleFlow {
+        0% {
+          transform: translateX(-10px) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
+        90% {
+          opacity: 1;
+          transform: translateX(calc(100vw + 20px)) scale(1.2);
+        }
+        100% {
+          transform: translateX(calc(100vw + 30px)) scale(0);
+          opacity: 0;
+        }
+      }
+
       /* Text shadows for readability */
       .text-shadow-lg {
         text-shadow: 0 10px 30px rgba(2,6,23,0.65);
@@ -96,6 +161,7 @@ export default function Hero({ scrollY }: HeroProps) {
 
       /* Respect reduced motion preferences */
       @media (prefers-reduced-motion: reduce) {
+        .particle { animation: none; }
         h1, p, button.animate-cta { animation: none; transform: none; }
       }
       `}</style>
