@@ -98,8 +98,7 @@ export default function Hero({ scrollY }: HeroProps) {
         </button>
       </div>
 
-      {/* Apple-style accent line */}
-      <div className="absolute bottom-12 w-40 h-1 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 opacity-30 animate-pulse z-20" />
+
 
       <style>{`
       /* Particle animation */
