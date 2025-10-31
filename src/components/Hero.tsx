@@ -47,7 +47,7 @@ export default function Hero({ scrollY }: HeroProps) {
 
   return (
     <section
-      className="relative h-screen flex flex-col justify-start items-center text-center px-6 overflow-hidden pb-16 md:pb-0 pt-20"
+      className="relative h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden"
       style={{
       opacity,
       transform: `scale(${scale}) translateY(${parallax}px)`,
@@ -78,22 +78,25 @@ export default function Hero({ scrollY }: HeroProps) {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#020614]/60 to-[#000008]/70 z-10"></div>
 
-      {/* Hero Title */}
-      <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 z-20" style={{ fontFamily: 'Orbitron, monospace' }}>
-      <span className="bg-gradient-to-r from-[#c084fc] via-[#fb7185] to-[#60a5fa] bg-clip-text text-transparent text-shadow-lg">
-        iBrain
-      </span>
-      </h1>
+      {/* Centered Content Group */}
+      <div className="z-20 flex flex-col items-center space-y-8">
+        {/* Hero Title */}
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight" style={{ fontFamily: 'Orbitron, monospace' }}>
+        <span className="bg-gradient-to-r from-[#c084fc] via-[#fb7185] to-[#60a5fa] bg-clip-text text-transparent text-shadow-lg">
+          iBrain
+        </span>
+        </h1>
 
-      {/* Tagline */}
-      <p className="text-lg md:text-xl lg:text-2xl text-white font-light max-w-2xl mb-12 z-20 text-shadow-md">
-      Where artificial intelligence becomes your teacher.
-      </p>
+        {/* Tagline */}
+        <p className="text-lg md:text-xl lg:text-2xl text-white font-light max-w-2xl text-center text-shadow-md">
+        Where artificial intelligence becomes your teacher.
+        </p>
 
-      {/* Call-to-action button */}
-      <button className="absolute bottom-32 left-1/2 transform -translate-x-1/2 px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 animate-cta z-30">
-        Start Learning
-      </button>
+        {/* Call-to-action button */}
+        <button className="px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 animate-cta">
+          Start Learning
+        </button>
+      </div>
 
       {/* Apple-style accent line */}
       <div className="absolute bottom-12 w-40 h-1 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 opacity-30 animate-pulse z-20" />
