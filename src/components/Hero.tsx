@@ -78,8 +78,8 @@ export default function Hero({ scrollY }: HeroProps) {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#020614]/60 to-[#000008]/70 z-10"></div>
 
-      {/* Centered Content Group */}
-      <div className="z-20 flex flex-col items-center space-y-8">
+      {/* Top Content - Title and Tagline */}
+      <div className="absolute top-16 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center space-y-4">
         {/* Hero Title */}
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight" style={{ fontFamily: 'Orbitron, monospace' }}>
         <span className="bg-gradient-to-r from-[#c084fc] via-[#fb7185] to-[#60a5fa] bg-clip-text text-transparent text-shadow-lg">
@@ -91,8 +91,12 @@ export default function Hero({ scrollY }: HeroProps) {
         <p className="text-lg md:text-xl lg:text-2xl text-white font-light max-w-2xl text-center text-shadow-md">
         Where artificial intelligence becomes your teacher.
         </p>
+      </div>
 
-        {/* Call-to-action button */}
+
+
+      {/* Bottom Button */}
+      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20">
         <button className="px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 animate-cta">
           Start Learning
         </button>
