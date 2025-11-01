@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Hero from './components/Hero';
-import Introduction from './components/Introduction';
 import HowItWorks from './components/HowItWorks';
 import Applications from './components/Applications';
 import Vision from './components/Vision';
@@ -31,9 +30,8 @@ function App() {
 
       <div className="relative bg-black text-white overflow-x-hidden">
       <Hero scrollY={scrollY} />
-      <Introduction scrollY={scrollY} />
       <HowItWorks scrollY={scrollY} />
-      <Applications scrollY={scrollY} />
+      <Applications />
       <Vision />
       <Demo />
       <Footer />
