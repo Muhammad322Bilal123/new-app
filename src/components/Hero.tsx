@@ -96,7 +96,7 @@ export default function Hero({ scrollY }: HeroProps) {
 
 
       {/* Bottom Button */}
-      <div className="absolute bottom-50 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute bottom-60 left-1/2 transform -translate-x-1/2 z-20">
         <button className="px-8 py-4 md:px-10 md:py-5 text-base md:text-lg font-medium text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 animate-cta">
           Start Learning
         </button>
